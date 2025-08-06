@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - Gatilho Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">GatilhoDigital</a>
+            <div class="navbar-links">
+                <a href="scripts.html">Scripts</a>
+                <a href="planos.html">Planos</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            <button class="navbar-toggler" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse">
+            <a href="scripts.html">Scripts</a>
+            <a href="planos.html">Planos</a>
+            <a href="contato.html">Contato</a>
+        </div>
+    </header>
+
+    <main class="container">
         <div class="page-header">
             <h1>Fale Conosco</h1>
             <p>Adoraríamos ouvir você. Entre em contato por um dos canais abaixo.</p>
@@ -15,19 +38,23 @@
                 <div class="card-content text-center">
                     <h3>E-mail</h3>
                     <p>Para suporte e questões gerais.</p>
-                    <a href="mailto:contato@gatilhodigital.com" class="button button-secondary">contato@gatilhodigital.com</a>
+                    <a href="mailto:contato@gatilhodigital.com" class="button button-primary">Enviar E-mail</a>
                 </div>
             </div>
             <div class="contact-card">
                 <div class="card-content text-center">
                     <h3>Instagram</h3>
                     <p>Siga-nos para novidades e dicas.</p>
-                    <a href="https://instagram.com/gatilhodigital" target="_blank" class="button button-secondary">@gatilhodigital</a>
+                    <a href="https://instagram.com/gatilhodigital" target="_blank" class="button button-primary">Seguir no Instagram</a>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <a href="https://wa.me/5500000000000" class="whatsapp-button" target="_blank"></a>
+    <footer style="text-align: center; padding: 2rem; background: #e9ecef; margin-top: 4rem;">
+        <p>&copy; 2025 Gatilho Digital. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>

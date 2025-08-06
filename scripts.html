@@ -2,26 +2,36 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scripts - Gatilho Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-brand">Gatilho Digital</a>
-            <nav class="navbar-links">
+            <a href="index.html" class="navbar-brand">GatilhoDigital</a>
+            <div class="navbar-links">
                 <a href="scripts.html">Scripts</a>
                 <a href="planos.html">Planos</a>
-                <a href="sobre.html">Sobre</a>
                 <a href="contato.html">Contato</a>
-            </nav>
+            </div>
+            <button class="navbar-toggler" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse">
+            <a href="scripts.html">Scripts</a>
+            <a href="planos.html">Planos</a>
+            <a href="contato.html">Contato</a>
         </div>
     </header>
 
     <main class="container">
         <div class="page-header">
             <h1>Nossos Scripts e Automações</h1>
-            <p>O Gatilho Digital é sua caixa de ferramentas para a produtividade...</p>
+            <p>Sua caixa de ferramentas para a produtividade. Escolha um script para começar.</p>
         </div>
         <div id="scripts-grid" class="grid-container">
             </div>
@@ -31,10 +41,10 @@
         <p>&copy; 2025 Gatilho Digital. Todos os direitos reservados.</p>
     </footer>
 
-    <a href="https://wa.me/5546999999999" class="whatsapp-button" target="_blank">...</a>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="main.js"></script>
     <script src="scripts-logic.js"></script>
 </body>
 </html>
