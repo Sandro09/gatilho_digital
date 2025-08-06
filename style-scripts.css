@@ -1,0 +1,33 @@
+body { font-family: 'Poppins', sans-serif; background-color: #f0f2f5; margin: 0; color: #333; }
+.navbar { background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 0 2rem; }
+.navbar-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; height: 70px; }
+.navbar-brand { font-size: 1.5rem; color: #1c1e21; }
+.user-info { display: flex; align-items: center; gap: 1rem; }
+#logout-btn { background-color: #e4e6eb; color: #4b4f56; border: none; border-radius: 8px; padding: 8px 15px; cursor: pointer; font-weight: 500; }
+
+.main-container { max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+.main-container h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+.main-container p { margin-bottom: 2rem; color: #606770; }
+
+.scripts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+
+.script-card { background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s; }
+.script-card:hover { transform: translateY(-5px); }
+.card-content { padding: 1.5rem; flex-grow: 1; }
+.card-content h3 { margin-top: 0; margin-bottom: 0.5rem; }
+.card-content p { font-size: 0.9rem; color: #606770; margin-bottom: 1rem; }
+.card-tags { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.tag { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 12px; font-weight: 500; }
+.tag-free { background-color: #d4edda; color: #155724; }
+.tag-paid { background-color: #f8d7da; color: #721c24; }
+.tag-sub { background-color: #fff3cd; color: #856404; }
+
+.card-footer { background-color: #f9f9f9; padding: 1rem 1.5rem; border-top: 1px solid #eee; }
+.card-footer button { width: 100%; padding: 0.75rem; border: none; border-radius: 6px; font-size: 1rem; font-weight: 500; cursor: pointer; }
+.btn-access { background-color: #28a745; color: white; }
+.btn-buy { background-color: #007bff; color: white; }
+.btn-subscribe { background-color: #ffc107; color: #212529; }
+
+/* ESTILO PARA ITENS BLOQUEADOS */
+.locked { filter: grayscale(90%); opacity: 0.8; }
+.locked .card-footer button { pointer-events: initial; } /* Garante que o botão ainda é clicável */
