@@ -1,0 +1,47 @@
+// COLE AQUI SUA CONFIG DO FIREBASE
+const firebaseConfig = { /* ... */ };
+
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// ... (código dos elementos do HTML) ...
+const redirectBtn = document.getElementById('redirect-btn');
+
+// ... (código do login com google e logout) ...
+
+auth.onAuthStateChanged(user => {
+    if (user) {
+        // Usuário logado
+        loginBox.classList.add('hidden');
+        userDashboard.classList.remove('hidden');
+        // Preenche info do usuário
+        userName.textContent = user.displayName;
+        userEmail.textContent = user.email;
+        userPhoto.src = user.photoURL;
+
+        // VERIFICA/CRIA O USUÁRIO NO FIRESTORE
+        const userRef = db.collection('users').doc(user.uid);
+        userRef.get().then(doc => {
+            if (!doc.exists) {
+                // Cria o perfil se for o primeiro login
+                userRef.set({
+                    nome: user.displayName,
+                    email: user.email,
+                    assinatura: { status: 'inactive', dataFim: null },
+                    scriptsComprados: []
+                });
+            }
+        });
+
+    } else {
+        // Usuário deslogado
+        loginBox.classList.remove('hidden');
+        userDashboard.classList.add('hidden');
+    }
+});
+
+// Botão para ir para a página de scripts
+redirectBtn.addEventListener('click', () => {
+    window.location.href = 'scripts.html';
+});

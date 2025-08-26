@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts - Central dos Bots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="Logo.jpeg" alt="Logo Central dos Bots">
+                <span>Central dos Bots</span>
+            </a>
+            <div class="navbar-links">
+                <a href="scripts.html" class="active">Scripts</a>
+                <a href="planos.html">Planos</a>
+                <a href="contato.html">Contato</a>
+                 <!-- O link de Logout será adicionado aqui via JS -->
+            </div>
+            <div class="theme-switch-wrapper">
+                <svg class="icon sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <label class="theme-switch" for="theme-checkbox"><input type="checkbox" id="theme-checkbox" /><div class="slider"></div></label>
+                <svg class="icon moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </div>
+            <button class="navbar-toggler" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        </div>
+        <div class="navbar-collapse">
+            <a href="scripts.html">Scripts</a>
+            <a href="planos.html">Planos</a>
+            <a href="contato.html">Contato</a>
+            <!-- O link de Logout será adicionado aqui via JS para mobile -->
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header" id="page-header-welcome">
+            <!-- Conteúdo dinâmico será inserido aqui via JS -->
+        </div>
+        <div id="scripts-grid" class="grid-container">
+            <!-- Os cards de scripts serão carregados aqui -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Central dos Bots. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="main.js"></script>
+    <script src="scripts-logic.js"></script>
+</body>
+</html>

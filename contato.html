@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Central dos Bots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PASSO 1: SCRIPT DA ICONIFY (ESSENCIAL) -->
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="Logo.jpeg" alt="Logo Central dos Bots">
+                <span>Central dos Bots</span>
+            </a>
+            <div class="navbar-links">
+                <a href="scripts.html">Scripts</a>
+                <a href="planos.html">Planos</a>
+                <a href="contato.html" class="active">Contato</a>
+            </div>
+            <div class="theme-switch-wrapper">
+                <svg class="icon sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+                <label class="theme-switch" for="theme-checkbox"><input type="checkbox" id="theme-checkbox" /><div class="slider"></div></label>
+                <svg class="icon moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+            </div>
+            <button class="navbar-toggler" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        </div>
+        <div class="navbar-collapse">
+            <a href="scripts.html">Scripts</a>
+            <a href="planos.html">Planos</a>
+            <a href="contato.html">Contato</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Fale Conosco</h1>
+            <p>Adoraríamos ouvir você. Entre em contato por um dos canais abaixo.</p>
+        </div>
+        <div class="grid-container">
+            
+            <!-- Card de E-mail (Gmail) -->
+            <div class="contact-card" id="gmail-card">
+                <span class="iconify contact-icon" data-icon="logos:google-gmail"></span>
+                <h3>E-mail</h3>
+                <p>Ideal para dúvidas detalhadas e suporte técnico. Respondemos em até 24h úteis.</p>
+                <a href="mailto:contato@centraldosbots.com" class="button">Enviar E-mail</a>
+            </div>
+
+            <!-- Card de WhatsApp -->
+            <div class="contact-card" id="whatsapp-card">
+                <span class="iconify contact-icon" data-icon="logos:whatsapp-icon"></span>
+                <h3>WhatsApp</h3>
+                <p>Perfeito para dúvidas rápidas e assuntos comerciais. Atendimento em tempo real.</p>
+                <a href="https://wa.me/5511999999999" target="_blank" class="button">Iniciar Conversa</a>
+            </div>
+
+            <!-- Card de Instagram -->
+            <div class="contact-card" id="instagram-card">
+                 <span class="iconify contact-icon" data-icon="skill-icons:instagram"></span>
+                 <h3>Instagram</h3>
+                <p>Siga-nos para ficar por dentro das novidades, dicas de automação e bastidores.</p>
+                <a href="https://instagram.com/seuperfil" target="_blank" class="button">Seguir no Instagram</a>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Central dos Bots. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
