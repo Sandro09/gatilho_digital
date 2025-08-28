@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador Contábil Avançado - Central dos Bots</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <img src="Logo.jpeg" alt="Logo Central dos Bots">
+                <span>Central dos Bots</span>
+            </a>
+            <div class="navbar-links">
+                <a href="scripts.html">Scripts</a>
+                <a href="planos.html">Planos</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            <button class="navbar-toggler" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        </div>
+        <div class="navbar-collapse">
+            <a href="scripts.html">Scripts</a>
+            <a href="planos.html">Planos</a>
+            <a href="contato.html">Contato</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Analisador Contábil Avançado</h1>
+            <p>Sua suíte de ferramentas para auditoria e análise financeira.</p>
+        </div>
+
+        <div class="card" id="control-panel">
+            <div class="form-group">
+                <label for="analysis-type">1. Escolha o tipo de análise:</label>
+                <select id="analysis-type" class="form-control">
+                    <option value="">Selecione...</option>
+                    <option value="find-duplicates">Análise de Duplicados (Texto ou Códigos)</option>
+                    <option value="financial-column">Análise Financeira de Coluna (Débito/Crédito)</option>
+                    <option value="cost-center">Revisão de Centro de Custos</option>
+                    <option value="vlookup">PROCV (Buscar valor em outra planilha)</option>
+                    <option value="bank-reconciliation">Conciliação Bancária (Razão x Extrato)</option>
+                </select>
+            </div>
+
+            <!-- Seção para 1 arquivo -->
+            <div id="single-file-section" class="analysis-section" style="display:none;">
+                <div class="form-group">
+                    <label>2. Carregue sua planilha (.CSV ou .XLSX):</label>
+                    <div class="file-upload-wrapper">
+                        <label for="file-upload-1" class="file-upload-label">
+                            <span class="iconify" data-icon="ph:upload-simple-bold"></span>
+                            <span>Escolher arquivo</span>
+                        </label>
+                        <input type="file" id="file-upload-1" class="file-upload-input" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                        <span id="file-name-1" class="file-name">Nenhum arquivo selecionado</span>
+                    </div>
+                </div>
+                <div id="single-column-options" style="display:none;">
+                     <div class="form-group">
+                        <label for="column-selector-1">3. Escolha a coluna de valores:</label>
+                        <select id="column-selector-1" class="form-control"></select>
+                    </div>
+                    <div class="form-group-inline" style="display: none;">
+                        <input type="checkbox" id="case-insensitive-checkbox">
+                        <label for="case-insensitive-checkbox">Ignorar maiúsculas/minúsculas</label>
+                    </div>
+                </div>
+                <div id="cost-center-options" style="display:none;" class="dual-select">
+                    <div class="form-group">
+                        <label for="category-column">3. Coluna de Categoria (Centro de Custo):</label>
+                        <select id="category-column" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="value-column">4. Coluna de Valores:</label>
+                        <select id="value-column" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção para 2 arquivos (ESTRUTURA CORRIGIDA) -->
+            <div id="two-files-section" class="analysis-section" style="display:none;">
+                <div class="dual-select">
+                    <div class="form-group">
+                        <label id="label-file-left">2. Planilha Principal</label>
+                        <div class="file-upload-wrapper">
+                            <label for="file-upload-left" class="file-upload-label">
+                                <span class="iconify" data-icon="ph:upload-simple-bold"></span>
+                                <span>Escolher arquivo</span>
+                            </label>
+                            <input type="file" id="file-upload-left" class="file-upload-input" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                            <span id="file-name-left" class="file-name">Nenhum arquivo selecionado</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="label-file-right">3. Planilha de Consulta</label>
+                         <div class="file-upload-wrapper">
+                            <label for="file-upload-right" class="file-upload-label">
+                                <span class="iconify" data-icon="ph:upload-simple-bold"></span>
+                                <span>Escolher arquivo</span>
+                            </label>
+                            <input type="file" id="file-upload-right" class="file-upload-input" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                            <span id="file-name-right" class="file-name">Nenhum arquivo selecionado</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Container unificado para alinhamento em grade -->
+                <div id="column-options-two-files" style="display:none;" class="form-grid-container">
+                     <div class="form-group">
+                        <label for="key-column-left" id="label-key-left">4. Coluna Chave (Principal):</label>
+                        <select id="key-column-left" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="key-column-right" id="label-key-right">5. Coluna Chave (Consulta):</label>
+                        <select id="key-column-right" class="form-control"></select>
+                    </div>
+                    <!-- Movido para dentro do mesmo container de grade -->
+                    <div id="value-options-two-files">
+                        <div class="form-group">
+                            <label for="value-column-left" id="label-value-left">6. Coluna de Valor (Principal):</label>
+                            <select id="value-column-left" class="form-control"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="value-column-right" id="label-value-right">7. Coluna de Valor (Consulta):</label>
+                            <select id="value-column-right" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="analyze-btn" class="button" style="display:none;" disabled>Analisar</button>
+        </div>
+    </main>
+
+    <!-- Modal de Resultados -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div id="modal-container" class="modal-container">
+            <div class="modal-header">
+                <h2 id="modal-title">Resultados da Análise</h2>
+                <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-content">
+                <div id="loader" class="loader">
+                    <div class="spinner"></div>
+                    <p>Processando seus dados...</p>
+                </div>
+                <div id="results-output"></div>
+            </div>
+            <div id="modal-footer" class="modal-footer" style="display: none;">
+                 <button id="download-csv-btn" class="button">
+                    <span class="iconify" data-icon="ph:file-csv-bold"></span>
+                    Baixar CSV
+                </button>
+                <button id="download-excel-btn" class="button">
+                    <span class="iconify" data-icon="ph:file-xls-bold"></span>
+                    Baixar Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="analisador-logic.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -88,11 +88,10 @@ async function loadAllScripts(userData) {
 function createScriptCard(id, script, user) {
     const card = document.createElement('div');
     
-    // Lógica de Acesso (simplificada, pode ser expandida)
+    // Lógica de Acesso
     const isFree = script.tipo === 'gratis';
     const hasSubscription = user && user.assinatura && user.assinatura.status === 'active';
     const hasPurchased = user && user.scriptsComprados && user.scriptsComprados.includes(id);
-
     const isUnlocked = isFree || hasSubscription || hasPurchased;
 
     let tagText = 'Bloqueado';
@@ -105,8 +104,9 @@ function createScriptCard(id, script, user) {
         tagColorClass = 'tag-free';
     }
 
+    // --- ALTERAÇÃO 1: Adicionado o data-script-name ---
     const buttonHTML = isUnlocked
-        ? `<button class="button-access">Acessar Script</button>`
+        ? `<button class="button-access" data-script-name="${script.nome}">Acessar Script</button>`
         : `<a href="planos.html" class="button-access" style="background-color: #6c757d; text-decoration: none;">Ver Planos</a>`;
 
     card.className = `script-card ${!isUnlocked ? 'grayscale' : ''}`;
@@ -126,4 +126,18 @@ function createScriptCard(id, script, user) {
         </div>
     `;
     scriptsGrid.appendChild(card);
+
+    // --- ALTERAÇÃO 2: Adicionada a lógica de clique do botão ---
+    const accessButton = card.querySelector('.button-access');
+    if (accessButton) {
+        accessButton.addEventListener('click', () => {
+            const scriptName = accessButton.getAttribute('data-script-name');
+            if (scriptName === 'Analisador Contábil') {
+                window.location.href = 'analisador-contabil.html';
+            } else if (scriptName) {
+                // Futuramente, você pode adicionar links para outros scripts aqui
+                alert(`Botão para "${scriptName}" clicado!`);
+            }
+        });
+    }
 }
